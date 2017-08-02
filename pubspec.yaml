@@ -1,0 +1,14 @@
+name: mic_stream
+description: A new flutter plugin project.
+version: 0.0.1
+author:
+homepage:
+
+flutter:
+  plugin:
+    androidPackage: com.yourcompany.micstream
+    pluginClass: MicStreamPlugin
+
+dependencies:
+  flutter:
+    sdk: flutter
