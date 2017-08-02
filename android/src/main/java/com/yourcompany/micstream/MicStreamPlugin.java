@@ -53,10 +53,11 @@ public class MicStreamPlugin implements EventChannel.StreamHandler {
             mFormat, mInBufferSize
     );
 
+    mRecorder.setPositionNotificationPeriod(mPeriodFrames);
 
     mListener = createRecordListener(events);
     mRecorder.setRecordPositionUpdateListener(mListener);
-    mRecorder.setPositionNotificationPeriod(mPeriodFrames);
+
     try {
       mRecorder.startRecording();
     } catch (IllegalStateException e) {
@@ -79,13 +80,16 @@ public class MicStreamPlugin implements EventChannel.StreamHandler {
         Log.e(LOG_TAG, "marker reached " + reads );
       }
       public void onPeriodicNotification(AudioRecord recorder){
-        int bytesOut = recorder.read(audioData,0,mInBufferSize);
+        int shortOut = recorder.read(audioData,0,mInBufferSize);
         short[] audioValues = new short[audioData.length];
         //make a copy of values to pass
-        for(int i = 0; i< audioData.length; i++){
+        for(int i = 0; i< shortOut; i++){
           audioValues[i] = audioData[i];
+          Log.e(LOG_TAG, "bit"  + audioValues[i] );
         }
         reads++;
+        Log.e(LOG_TAG, "marker reached " + reads );
+
         events.success(audioValues);
       }
     };
