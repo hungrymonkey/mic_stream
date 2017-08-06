@@ -22,8 +22,8 @@ class FragmentPlayer{
       // https://flutter.io/platform-channels/#codec
       Uint8List byteFrags = new Uint8List(fragments.length * 2);
       for (var i = 0; i < fragments.length; i++) {
-        byteFrags[i] = (fragments[i] & 0xff);
-        byteFrags[i + 1] = ((fragments[i] >> 8) & 0xff);
+        byteFrags[i*2] = (fragments[i] & 0xff);
+        byteFrags[i*2 + 1] = ((fragments[i] >> 8) & 0xff);
       }
 
       final int result = await platform.invokeMethod('play', byteFrags);
