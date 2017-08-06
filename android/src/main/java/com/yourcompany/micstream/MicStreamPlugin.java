@@ -80,15 +80,18 @@ public class MicStreamPlugin implements EventChannel.StreamHandler {
         Log.e(LOG_TAG, "marker reached " + reads );
       }
       public void onPeriodicNotification(AudioRecord recorder){
-        int shortOut = recorder.read(audioData,0,mInBufferSize);
-        short[] audioValues = new short[audioData.length];
+        int shortOut = recorder.read(audioData,0,mPeriodFrames);
+        //https://flutter.io/platform-channels/#codec
+        //convert short to byte because platformchannel limitation
+        byte[] audioValues = new byte[audioData.length*2];
+
         //make a copy of values to pass
         for(int i = 0; i< shortOut; i++){
-          audioValues[i] = audioData[i];
-          Log.e(LOG_TAG, "bit"  + audioValues[i] );
+          audioValues[i*2] = (byte)(audioData[i]& 0xff);
+          audioValues[i*2+1] = (byte)((audioData[i]>> 8) & 0xff);
         }
         reads++;
-        Log.e(LOG_TAG, "marker reached " + reads );
+        //Log.e(LOG_TAG, "marker reached " + reads );
 
         events.success(audioValues);
       }
