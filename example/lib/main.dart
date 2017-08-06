@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
   List<StreamSubscription<dynamic>> _micStreamSubscription = <StreamSubscription<dynamic>>[];
   Uint16List _micAudioFragment= null;
   FragmentPlayer _fPlayer;
-  int _counter;
+  num _counter;
   @override
   initState() {
     super.initState();
@@ -61,7 +61,7 @@ class _MyAppState extends State<MyApp> {
                     new IconButton(icon: new Icon(Icons.stop), onPressed: (){_fPlayer.stop();}),
                   ],
               ),
-              new Text('Running on: ${_micAudioFragment.toString()}\n'),
+              new Text('Running on: ${_counter}\n'),
             ],
           ),
         ),

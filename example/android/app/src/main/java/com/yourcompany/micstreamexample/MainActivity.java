@@ -25,8 +25,8 @@ public class MainActivity extends FlutterActivity {
         @Override
         public void onMethodCall(MethodCall call, Result result) {
           if (call.method.equals("play")) {
-            HashMap<String, byte[]> args = (HashMap) call.arguments();
-            fPlayer.play(args.get("audioFragment"));
+            byte[] args =  call.arguments();
+            fPlayer.play(args);
             result.success(1);
           } if(call.method.equals("stop")) {
             fPlayer.stop();
@@ -48,7 +48,7 @@ class FragmentPlayer{
     sampleRate = 48000;
     audioFormat = new AudioFormat.Builder()
             .setEncoding(AudioFormat.ENCODING_PCM_16BIT).setSampleRate(sampleRate)
-            .setSampleRate(AudioFormat.CHANNEL_OUT_MONO).build();
+            .setChannelMask(AudioFormat.CHANNEL_OUT_MONO).build();
   }
   public void play(byte [] audioFrag){
     if(audioTrack == null){
