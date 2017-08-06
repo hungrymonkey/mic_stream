@@ -1,10 +1,16 @@
 # mic_stream
 
-A new flutter plugin project.
+A Flutter plugin to access the mic fragments as Uint16List.
 
 ## Getting Started
 
-For help getting started with Flutter, view our online
-[documentation](http://flutter.io/).
+To use this plugin, add mic_stream as a dependency in your pubspec.yaml file.
 
-For help on editing plugin code, view the [documentation](https://flutter.io/platform-plugins/#edit-code).
+## Example
+
+import 'package:mic_stream/mic_stream.dart';
+
+micEvents.listen((MicEvent event) {
+ // Do something with the event.
+});
+
