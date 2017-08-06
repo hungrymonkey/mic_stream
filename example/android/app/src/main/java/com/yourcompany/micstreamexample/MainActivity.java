@@ -47,8 +47,9 @@ class FragmentPlayer{
   FragmentPlayer(){
     sampleRate = 48000;
     audioFormat = new AudioFormat.Builder()
-            .setEncoding(AudioFormat.ENCODING_PCM_16BIT).setSampleRate(sampleRate)
-            .setSampleRate(AudioFormat.CHANNEL_OUT_MONO).build();
+            .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
+            .setSampleRate(sampleRate)
+            .build();
   }
   public void play(byte [] audioFrag){
     if(audioTrack == null){
