@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
     _micStreamSubscription.add(micEvents.listen((MicEvent e){
       setState((){
         _micAudioFragment = e.audioData;
-        //_fPlayer.stream(_micAudioFragment);
+        _fPlayer.stream(_micAudioFragment);
         _counter++;
       });
     }));

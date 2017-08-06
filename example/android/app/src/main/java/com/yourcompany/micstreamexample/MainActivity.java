@@ -60,9 +60,11 @@ class FragmentPlayer{
     audioTrack.play();
   }
   public void stop(){
-    audioTrack.stop();
-    audioTrack.release();
-    audioTrack = null;
+    if(audioTrack != null) {
+      audioTrack.stop();
+      audioTrack.release();
+      audioTrack = null;
+    }
   }
 }
 
