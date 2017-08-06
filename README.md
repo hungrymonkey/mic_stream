@@ -1,6 +1,6 @@
 # mic_stream
 
-A Flutter plugin to access the mic fragments as Uint16List.
+A Flutter plugin to access the mic fragments as Uint16List. Currently, android only
 
 ## Getting Started
 
