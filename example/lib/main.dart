@@ -19,6 +19,7 @@ class _MyAppState extends State<MyApp> {
   List<StreamSubscription<dynamic>> _micStreamSubscription = <StreamSubscription<dynamic>>[];
   Uint16List _micAudioFragment= null;
   List<int> _micClip = null;
+  num _samples = 10000;
   FragmentPlayer _fPlayer;
   num _counter;
   @override
@@ -31,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       setState((){
         _micAudioFragment = e.audioData;
 
-        if(_counter < 10000) {
+        if(_counter < _samples) {
             _micClip.addAll(_micAudioFragment);
           _counter++;
         }
@@ -75,7 +76,9 @@ class _MyAppState extends State<MyApp> {
                         }),
                   ],
               ),
-              new Text('Running on: ${_counter}\n'),
+              new Text('Mic samples saved: ${_counter}\n'
+                 'only saves up to ${_samples} and the stop but reset the samples '
+                  'saved'),
             ],
           ),
         ),
