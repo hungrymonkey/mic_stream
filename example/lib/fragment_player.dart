@@ -15,13 +15,9 @@ class FragmentPlayer{
   FragmentPlayer(): _pState = PlayerState.stopped{
   }
 
-  Future<Null> start() async {
-    if(_pState != PlayerState.playing){
-      _pState = PlayerState.playing;
-    }
-  }
-  Future<Null> stream(Uint16List fragments) async{
-    if(_pState == PlayerState.playing) {
+
+  Future<Null> play(Uint16List fragments) async{
+    if(_pState != PlayerState.playing) {
       //covert to byte list as limited by platform channels supported type
       // https://flutter.io/platform-channels/#codec
       Uint8List byteFrags = new Uint8List(fragments.length * 2);
@@ -31,6 +27,8 @@ class FragmentPlayer{
       }
 
       final int result = await platform.invokeMethod('play', byteFrags);
+      _pState = result == 1 ? PlayerState.playing : _pState;
+
     }
   }
   Future<Null> stop() async{

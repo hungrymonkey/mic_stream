@@ -18,6 +18,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   List<StreamSubscription<dynamic>> _micStreamSubscription = <StreamSubscription<dynamic>>[];
   Uint16List _micAudioFragment= null;
+  List<int> _micClip = null;
   FragmentPlayer _fPlayer;
   num _counter;
   @override
@@ -25,11 +26,15 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     _fPlayer = new FragmentPlayer();
     _counter = 0;
+    _micClip = new List();
     _micStreamSubscription.add(micEvents.listen((MicEvent e){
       setState((){
         _micAudioFragment = e.audioData;
-        _fPlayer.stream(_micAudioFragment);
-        _counter++;
+
+        if(_counter < 10000) {
+            _micClip.addAll(_micAudioFragment);
+          _counter++;
+        }
       });
     }));
   }
@@ -57,8 +62,17 @@ class _MyAppState extends State<MyApp> {
             children: <Widget>[
               new Row(
                   children: <Widget>[
-                    new IconButton(icon: new Icon(Icons.play_arrow), onPressed: (){_fPlayer.start();}),
-                    new IconButton(icon: new Icon(Icons.stop), onPressed: (){_fPlayer.stop();}),
+                    new IconButton(icon: new Icon(Icons.play_arrow),
+                        onPressed: (){ _fPlayer.play(new Uint16List.fromList(_micClip));}),
+                    new IconButton(icon: new Icon(Icons.stop),
+                        onPressed: (){
+                          setState(() {
+                            _fPlayer.stop();
+                            _micClip.clear();
+                            _counter = 0;
+                          }
+                          );
+                        }),
                   ],
               ),
               new Text('Running on: ${_counter}\n'),

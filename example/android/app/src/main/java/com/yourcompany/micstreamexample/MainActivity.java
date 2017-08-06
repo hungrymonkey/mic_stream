@@ -54,7 +54,7 @@ class FragmentPlayer{
     if(audioTrack == null){
       AudioAttributes aa = new AudioAttributes.Builder().build();
       audioTrack = new AudioTrack( aa, new AudioFormat.Builder(audioFormat).build(), audioFrag.length,
-              AudioTrack.MODE_STREAM, AudioManager.AUDIO_SESSION_ID_GENERATE);
+              AudioTrack.MODE_STATIC, AudioManager.AUDIO_SESSION_ID_GENERATE);
     }
     audioTrack.write(audioFrag,0,audioFrag.length);
     audioTrack.play();
