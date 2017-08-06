@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 
 
 const EventChannel _recordEventChannel =
-const EventChannel('com.yourcompany.micstream/record');
+  const EventChannel('com.yourcompany.micstream/record');
 class MicEvent {
   final Uint16List audioData;
   MicEvent(this.audioData);

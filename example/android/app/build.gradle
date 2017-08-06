@@ -27,6 +27,7 @@ android {
 
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.yourcompany.micstreamexample"
+        minSdkVersion 21
     }
 
     buildTypes {
