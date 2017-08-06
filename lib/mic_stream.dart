@@ -12,7 +12,7 @@ class MicEvent {
 MicEvent _covertByte2Short(Uint8List audio){
   Uint16List result = new Uint16List((audio.length/2).floor());
   for(var i = 0; i < audio.length/2; i++){
-    result[i] = (audio[i+1] & 0xFF) << 8 | (audio[i] & 0xFF);
+    result[i] = (audio[i*2+1] & 0xFF) << 8 | (audio[i*2] & 0xFF);
   }
   return new MicEvent(result);
 }
