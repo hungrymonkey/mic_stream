@@ -40,7 +40,7 @@ public class MicStreamPlugin implements EventChannel.StreamHandler {
     mSampleRate = 48000;
     mInBufferSize = AudioRecord.getMinBufferSize(
             mSampleRate, AudioFormat.CHANNEL_IN_MONO, mFormat
-    )*3;
+    )*2;
     //https://stackoverflow.com/questions/15804903/android-dev-audiorecord-without-blocking-or-threads
     //require android 5
     //2bytes in a short. So number of frames is totalbytes/2
