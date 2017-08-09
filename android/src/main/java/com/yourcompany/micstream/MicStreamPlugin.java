@@ -13,6 +13,7 @@ import android.media.AudioFormat;
 import android.media.MediaRecorder;
 import android.util.Log;
 import android.app.Activity;
+
 /**
  * MicStreamPlugin
  */
@@ -38,9 +39,12 @@ public class MicStreamPlugin implements EventChannel.StreamHandler {
   private MicStreamPlugin(Activity activity){
     mRecorder = null;
     mSampleRate = 48000;
-    mInBufferSize = AudioRecord.getMinBufferSize(
+    int minBufferSizeBytes = AudioRecord.getMinBufferSize(
             mSampleRate, AudioFormat.CHANNEL_IN_MONO, mFormat
-    )*2;
+    );
+    //buffer size is a power of two
+    mInBufferSize = minBufferSizeBytes < 8192 ? 8192 :
+            (int) Math.pow(2,Math.floor(Math.log(minBufferSizeBytes)/Math.log(2))+1);
     //https://stackoverflow.com/questions/15804903/android-dev-audiorecord-without-blocking-or-threads
     //require android 5
     //2bytes in a short. So number of frames is totalbytes/2
