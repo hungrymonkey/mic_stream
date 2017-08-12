@@ -76,11 +76,9 @@ class _MyAppState extends State<MyApp> {
                         }),
                   ],
               ),
-              new Text('Mic fragments saved: ${_counter}\n'
-                  'Number of samples acquired per frag: ${_micAudioFragment == null ? 0 : _micAudioFragment.length}\n'
+              new Text('Mic samples saved: ${_counter}\n'
                  'only saves up to ${_samples} and the stop but reset the samples '
                   'saved'),
-
             ],
           ),
         ),
