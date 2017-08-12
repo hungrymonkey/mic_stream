@@ -12,5 +12,14 @@ import 'package:mic_stream/mic_stream.dart';
 
 micEvents.listen((MicEvent event) {
  // Do something with the event.
+ event.audioData //<UInt16List>
+});
+
+
+micEventsFFT.listen((MicEvent event) {
+ // Do something with the event.
+ // I do not recommend the fft event because it is very slow
+ event.audioData
+ event.frequencyDomain //<Float64List>
 });
 ```

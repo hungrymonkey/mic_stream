@@ -1,27 +1,37 @@
 import 'dart:async';
 import 'dart:typed_data';
 import 'package:flutter/services.dart';
-
+import 'package:mic_stream/utils.dart';
 
 const EventChannel _recordEventChannel =
   const EventChannel('com.yourcompany.micstream/record');
 class MicEvent {
   final Uint16List audioData;
-  MicEvent(this.audioData);
+  final Float64List frequencyDomain;
+  MicEvent(this.audioData, {this.frequencyDomain});
 }
-MicEvent _covertByte2Short(Uint8List audio){
-  Uint16List result = new Uint16List((audio.length/2).floor());
-  for(var i = 0; i < audio.length/2; i++){
-    result[i] = (audio[i*2+1] & 0xFF) << 8 | (audio[i*2] & 0xFF);
-  }
-  return new MicEvent(result);
+
+MicEvent _createEvent(Uint8List audio){
+  return new MicEvent(Utils.covertByte2Short(audio));
+}
+MicEvent _createFFTEvent(Uint8List audio){
+  var audioData = Utils.covertByte2Short(audio);
+  return new MicEvent(audioData, frequencyDomain: Utils.analyzeAudio(audioData));
 }
 Stream<MicEvent> _micEvents;
 Stream<MicEvent> get micEvents {
   if (_micEvents == null) {
     _micEvents = _recordEventChannel
         .receiveBroadcastStream()
-        .map(_covertByte2Short);
+        .map(_createEvent);
+  }
+  return _micEvents;
+}
+Stream<MicEvent> get micEventsFFT {
+  if (_micEvents == null) {
+    _micEvents = _recordEventChannel
+        .receiveBroadcastStream()
+        .map(_createFFTEvent);
   }
   return _micEvents;
 }

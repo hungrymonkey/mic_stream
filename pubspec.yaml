@@ -12,3 +12,5 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
+  fft: "^0.0.13"
+  complex:
