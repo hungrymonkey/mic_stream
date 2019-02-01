@@ -28,11 +28,14 @@ public class MainActivity extends FlutterActivity {
             byte[] args =  call.arguments();
             fPlayer.play(args);
             result.success(1);
+            return;
           } if(call.method.equals("stop")) {
             fPlayer.stop();
             result.success(1);
+            return;
           } else {
             result.notImplemented();
+            return;
           }
         }
       }

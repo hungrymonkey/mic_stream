@@ -7,6 +7,10 @@ dependencies:
   mic_stream:
     path: ../
 
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0" 
+
+
 
 
 # For information on the generic Dart part of this file, see the

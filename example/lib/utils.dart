@@ -4,7 +4,7 @@ import 'dart:typed_data';
 class Utils {
   static num argmin(Float64List data){
     num minIdx = -1;
-    num minVal = double.INFINITY;
+    num minVal = double.infinity;
     for(var i = 0; i < data.length; i++){
       if(data[i] < minVal ){
         minIdx = i;
@@ -15,7 +15,7 @@ class Utils {
   }
   static num argmax(Float64List data){
     num maxIdx = -1;
-    num maxVal = double.NEGATIVE_INFINITY;
+    num maxVal = double.negativeInfinity;
     for(var i = 0; i < data.length; i++){
       if(data[i] > maxVal ){
         maxIdx = i;
