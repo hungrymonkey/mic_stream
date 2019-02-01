@@ -11,10 +11,10 @@ class MicEvent {
   MicEvent(this.audioData, {this.frequencyDomain});
 }
 
-MicEvent _createEvent(Uint8List audio){
+MicEvent _createEvent(dynamic audio){
   return new MicEvent(Utils.covertByte2Short(audio));
 }
-MicEvent _createFFTEvent(Uint8List audio){
+MicEvent _createFFTEvent(dynamic audio){
   var audioData = Utils.covertByte2Short(audio);
   return new MicEvent(audioData, frequencyDomain: Utils.analyzeAudio(audioData));
 }

@@ -33,7 +33,7 @@ class Utils{
       audioFloats[i] = (audioFrag[i].toDouble()-avgSignal)/32768.0;
     }
 
-    var windowed = Window.Hann(audioFloats);
+    var windowed = new Window(WindowType.HAMMING).apply(audioFloats);
     var complexes = new FFT().Transform(windowed);
     Float64List magnitude = new Float64List(complexes.length);
     for(var i = 0; i < complexes.length; i++){
