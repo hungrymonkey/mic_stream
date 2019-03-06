@@ -1,6 +1,7 @@
 # mic_stream
 
 A Flutter plugin to access the mic fragments as Uint16List. Currently, android only
+
 Master branch should work with flutter stable.
 
 ## Getting Started
