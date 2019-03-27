@@ -16,7 +16,7 @@ dependencies:
 ```
 
 ## Example
-```
+```dart
 import 'package:mic_stream/mic_stream.dart';
 
 micEvents.listen((MicEvent event) {
