@@ -8,6 +8,13 @@ Master branch should work with flutter stable.
 
 To use this plugin, add mic_stream as a dependency in your [pubspec.yaml](https://flutter.io/using-packages/) file.
 
+```
+dependencies:
+  mic_stream:
+    git:
+      url: https://github.com/hungrymonkey/mic_stream.git
+```
+
 ## Example
 ```
 import 'package:mic_stream/mic_stream.dart';
