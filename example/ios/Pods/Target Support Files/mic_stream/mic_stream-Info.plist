@@ -5,22 +5,22 @@
   <key>CFBundleDevelopmentRegion</key>
   <string>en</string>
   <key>CFBundleExecutable</key>
-  <string>App</string>
+  <string>${EXECUTABLE_NAME}</string>
   <key>CFBundleIdentifier</key>
-  <string>io.flutter.flutter.app</string>
+  <string>${PRODUCT_BUNDLE_IDENTIFIER}</string>
   <key>CFBundleInfoDictionaryVersion</key>
   <string>6.0</string>
   <key>CFBundleName</key>
-  <string>App</string>
+  <string>${PRODUCT_NAME}</string>
   <key>CFBundlePackageType</key>
   <string>FMWK</string>
   <key>CFBundleShortVersionString</key>
-  <string>1.0</string>
+  <string>0.0.1</string>
   <key>CFBundleSignature</key>
   <string>????</string>
   <key>CFBundleVersion</key>
-  <string>1.0</string>
-  <key>MinimumOSVersion</key>
-  <string>8.0</string>
+  <string>${CURRENT_PROJECT_VERSION}</string>
+  <key>NSPrincipalClass</key>
+  <string></string>
 </dict>
 </plist>

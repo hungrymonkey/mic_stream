@@ -1,0 +1,6 @@
+framework module mic_stream {
+  umbrella header "mic_stream-umbrella.h"
+
+  export *
+  module * { export * }
+}

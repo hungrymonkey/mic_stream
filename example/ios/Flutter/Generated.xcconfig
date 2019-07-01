@@ -1,0 +1,7 @@
+// This is a generated file; do not edit or check into version control.
+FLUTTER_ROOT=/Users/psuedofinnish/flutter
+FLUTTER_APPLICATION_PATH=/Users/psuedofinnish/git_repo/mic_stream/example
+FLUTTER_TARGET=/Users/psuedofinnish/git_repo/mic_stream/example/lib/main.dart
+FLUTTER_BUILD_DIR=build
+SYMROOT=${SOURCE_ROOT}/../build/ios
+FLUTTER_FRAMEWORK_DIR=/Users/psuedofinnish/flutter/bin/cache/artifacts/engine/ios
