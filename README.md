@@ -32,3 +32,12 @@ micEventsFFT.listen((MicEvent event) {
  event.frequencyDomain //<Float64List>
 });
 ```
+
+## References
+
+- Flutter Event Channels
+  + https://api.flutter.dev/javadoc/io/flutter/plugin/common/EventChannel.EventSink.html
+- Android Recording API
+  + https://developer.android.com/reference/android/media/AudioRecord.html
+
+
